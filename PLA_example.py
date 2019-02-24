@@ -10,7 +10,7 @@ class Perceptron(object):
     def train(self, T):
         w = np.zeros(T.shape[1]-1)  # 初始化权重向量为0 [权重都从0开始]
         b = 0  # 初始化阈值为0
-        print ' W     X      W       B'
+        print(' W     X      W       B')
         #训练study_total次
         for study in range(self.study_total):
             w_before = w    #训练前的w值
@@ -25,12 +25,12 @@ class Perceptron(object):
                 if distin <= 0:
                     w = w + self.study_step*Y*X
                     b = b + self.study_step*Y
-                    print 'w',self.w_total,': x',t+1,w[0:w.shape[0]], '  ', b
+                    print('w',self.w_total,': x',t+1,w[0:w.shape[0]], '  ', b)
                     self.w_total = self.w_total + 1
- 
+
             #经过训练后w、b都不在变化，说明训练集中已没有误分类点，那么跳出循环
             if w_before is w and b_before == b:
-                print '训练后，得到w、b:', w[0:w.shape[0]], ' ', b
+                print('训练后，得到w、b:', w[0:w.shape[0]], ' ', b)
                 break
         return w,b
     #得出w*x+b的值
@@ -47,8 +47,8 @@ if __name__ == '__main__':
     per = Perceptron()
     #训练数据集，x1=(3,3),x2=(4,3),x3=(1,1), 对应于y1=1,y2=1,y3=-1
     T = np.array([[3,3,1],[4,3,1],[1,1,-1]])  #进行训练的数据集
-    w,b = per.train(T)     #经过训练得到w\b
+    # w,b = per.train(T)     #经过训练得到w\b
  
     X = np.array([3, 3])  # 对X进行预测
     Y = per.prediction(X,w,b)   #得到X的预测值
-    print 'X预测得到Y：',Y
+    print('X预测得到Y：',Y)
