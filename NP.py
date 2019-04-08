@@ -33,24 +33,19 @@ y1 = 0.2 * norm.normpdf(x, 0, 1) + \
      0.4 * norm.normpdf(x, 7, 3)
 y2 = 0.2 * norm.normpdf(x, 3, 2) + \
      0.8 * norm.normpdf(x, 9, 3.5)
-#z1 = p_w1 * y1 / (p_w1 * y1 + p_w2 * y2)
-#print(p_w1 * y1 + p_w2 * y2)
 z1 = p_w1 * y1
 z2 = p_w2 * y2
-#print(y1.sum(),y2.sum(),z1.sum(),z2.sum())
 
 l = y1/y2
 pe_1 = 0.2
 plt.plot(x,l)
-plt.show()
+# plt.show()
 dl = np.linspace(0,l.max(),500)
 for t in range(500):
     e_y1 = y1[l < dl[t]]
     e_y2 = y2[l > dl[t]]
-    if (e_y1.sum()*0.07 > 0.15 and e_y1.sum()*0.07 < 0.25):
-        plt.fill(x[l < dl[t]],l[l < dl[t]])
-        plt.fill(x[l > dl[t]],l[l > dl[t]])
-        plt.show()
-        print(t,dl[t],e_y1.sum()*0.07,e_y2.sum()*0.07)
-#print(y1[l<0.64].sum(),y2[l>0.64].sum())
-        
+    if (e_y1.sum()*0.07 > 0.195 and e_y1.sum()*0.07 < 0.205):
+        gl = l < (dl[t] + 0.01)
+        sl = l > (dl[t] - 0.006)
+        print(x[gl & sl])
+        print(dl[t],e_y1.sum()*0.07,e_y2.sum()*0.07)

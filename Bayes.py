@@ -51,9 +51,9 @@ for i in range(X.shape[0]):
     tx,ty = X[i]
     if (ty<z1[i%500] or ty<z2[i%500]):
         z[i] = 1
-    if (ty<z1[i%500] and ty<z2[i%500])and(z1[i%500] < z2[i%500]):
+    if (ty<z1[i%500] and ty<z2[i%500]) and (z1[i%500] < z2[i%500]):
         z[i] = 2
-    if (ty<z1[i%500] and ty<z2[i%500])and(z2[i%500] < z1[i%500]):
+    if (ty<z1[i%500] and ty<z2[i%500]) and (z2[i%500] < z1[i%500]):
         z[i] = 3      
 z = z.reshape(xv.shape)
 
